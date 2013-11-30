@@ -1,0 +1,9 @@
+<h1>Post a New Tweet</h1>
+
+<%= form_for @tweet do |f| %>
+	<%= f.label :author, "Your Name:" %>
+	<%= f.text_field :author %></br>
+	<%= f.label :body, "Your Message:" %>
+	<%= f.text_field :body %></br>
+	<%= f.submit "Post my tweet" %>
+<% end %>
