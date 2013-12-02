@@ -7,15 +7,14 @@
 <% end %>
 </br>
 <% @tweets.each do |tweet| %>
-	<div class="tweet"><%= truncate(tweet.body, length:80, omission: '..(continue)') %></br>
-		- <%= tweet.created_at %> by
-		<strong><%= tweet.author %></strong> (<%= pluralize tweet.body.length, 'character' %>)
-	</br>
-	<%= link_to "View more", tweet_path(tweet) %>
-	</div>
+	<% if @query.present? %>
+		<div class="tweet"><%= highlight(tweet.body, @query) %></br>
+	<% else %>
+		<div class="tweet"><%= truncate(tweet.body, length:80, omission: '..(continue)') %></br>
+	<% end %>
+			- <%= tweet.created_at %> by
+			<strong><%= tweet.author %></strong> (<%= pluralize tweet.body.length, 'character' %>)
+		</br>
+		<%= link_to "View more", tweet_path(tweet) %>
+		</div>
 <% end %>
-
-
-<!--Highlight method-->
-
-	<!--<%#= highlight tweet.body, @query%>-->

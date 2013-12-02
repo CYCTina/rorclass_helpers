@@ -1,5 +1,7 @@
 <h1>Post a New Tweet</h1>
-
+<% @tweet.errors.full_messages.each do |msg| %>
+	<div><%= msg %></div>
+<% end %>
 <%= form_for @tweet do |f| %>
 	<%= f.label :author, "Your Name:" %>
 	<%= f.text_field :author %></br>
